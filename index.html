@@ -3,20 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Be My Valentine?</title>
+    <title>For Yaya ❤️</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 </head>
 <body>
     <div class="container">
-        <div id="valentine-card">
-            <img id="main-image" src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHYybmZueXh6Z3R3eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/c76IJLufpNUMo/giphy.gif" alt="Cute cat">
-            <h1 id="question">Will you be my Valentine? ❤️</h1>
-            <div class="buttons">
-                <button id="yesButton" onclick="celebrate()">Yes!</button>
-                <button id="noButton" onmouseover="moveButton()">No</button>
-            </div>
+        <h2 id="name-greeting">Hi Yaya</h2>
+        <h1 id="question">Will you be my Valentine? ❤️</h1>
+        <div class="buttons">
+            <button id="yesButton" onclick="celebrate()">Yes!</button>
+            <button id="noButton" onmouseover="moveButton()" onclick="moveButton()">No</button>
         </div>
     </div>
+
+    <audio id="bgMusic" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
     <script src="script.js"></script>
 </body>
 </html>
