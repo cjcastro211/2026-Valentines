@@ -1,23 +1,34 @@
+/* style.css */
+
 body {
-    background-color: #ffdae0;
+    /* This creates a soft pink overlay so your photo doesn't drown out the text */
+    background: linear-gradient(rgba(255, 182, 193, 0.4), rgba(255, 182, 193, 0.4)), 
+                url('background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
-    font-family: 'Arial', sans-serif;
-    overflow: hidden; /* Prevents scrollbars from appearing when button moves */
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    overflow: hidden; /* Keeps the 'No' button from creating scrollbars */
 }
 
 .container {
     text-align: center;
-    background: white;
+    background: rgba(255, 255, 255, 0.85); /* Semi-transparent white */
+    backdrop-filter: blur(8px); /* Blurs the background behind the card for a modern look */
     padding: 40px;
     border-radius: 30px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    width: 80%;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    width: 85%;
     max-width: 400px;
-    position: relative;
+    z-index: 1;
+    border: 2px solid #fff;
 }
 
 #name-greeting {
@@ -25,12 +36,14 @@ body {
     font-size: 3.5rem;
     color: #ff4d6d;
     margin: 0 0 10px 0;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
 }
 
 h1 {
     color: #d63384;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     margin-bottom: 30px;
+    line-height: 1.4;
 }
 
 .buttons {
@@ -38,17 +51,19 @@ h1 {
     justify-content: center;
     align-items: center;
     gap: 20px;
-    height: 100px;
+    min-height: 100px;
+    position: relative;
 }
 
 button {
-    padding: 15px 30px;
+    padding: 15px 35px;
     font-size: 1.2rem;
     border: none;
     border-radius: 50px;
     cursor: pointer;
     font-weight: bold;
-    transition: 0.1s;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 #yesButton {
@@ -56,8 +71,28 @@ button {
     color: white;
 }
 
+#yesButton:hover {
+    transform: scale(1.1);
+    background-color: #ff3355;
+}
+
 #noButton {
     background-color: #adb5bd;
     color: white;
-    position: fixed; /* This is key for the runaway effect */
+    position: fixed; /* Necessary for the runaway script to work anywhere on screen */
+    transition: 0.1s ease-out;
+    z-index: 10;
+}
+
+/* Mobile adjustments */
+@media (max-width: 480px) {
+    #name-greeting {
+        font-size: 2.8rem;
+    }
+    h1 {
+        font-size: 1.3rem;
+    }
+    .container {
+        padding: 30px 20px;
+    }
 }
