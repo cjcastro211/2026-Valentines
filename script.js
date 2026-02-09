@@ -27,13 +27,11 @@ animate();
 
 // --- Valentine Logic ---
 function moveButton() {
-    // Play music on first interaction
-    const music = document.getElementById('bgMusic');
-    music.play();
+    // MUSIC REMOVED FROM HERE 
+    // The song will NOT play when she tries to hit "No"
 
     const noBtn = document.getElementById('noButton');
     
-    // Clear the CSS "center" positioning
     noBtn.style.transform = "none";
     noBtn.style.bottom = "auto"; 
 
@@ -45,6 +43,8 @@ function moveButton() {
 }
 
 function celebrate() {
+    // MUSIC STARTS HERE
+    // The song only plays when she officially says YES!
     const music = document.getElementById('bgMusic');
     music.play();
 
