@@ -1,22 +1,43 @@
 function moveButton() {
+    // Play music when she first interacts with the site
+    const music = document.getElementById('bgMusic');
+    music.play();
+
     const noBtn = document.getElementById('noButton');
     
-    // Calculate new position within the screen boundaries
-    // We subtract button size so it doesn't go off edge
-    const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
-    const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
-    
-    noBtn.style.left = x + 'px';
-    noBtn.style.top = y + 'px';
+    // Get screen dimensions
+    const maxWidth = window.innerWidth - noBtn.offsetWidth;
+    const maxHeight = window.innerHeight - noBtn.offsetHeight;
+
+    // Generate random coordinates
+    const randomX = Math.floor(Math.random() * maxWidth);
+    const randomY = Math.floor(Math.random() * maxHeight);
+
+    // Apply new position
+    noBtn.style.left = randomX + 'px';
+    noBtn.style.top = randomY + 'px';
 }
 
 function celebrate() {
-    // Change text and GIF
-    document.getElementById('question').innerHTML = "Yay! Best Valentine ever! 😘";
-    document.getElementById('main-image').src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHYybmZueXh6Z3R3eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/KZTic7sqK6iL21yq9O/giphy.gif";
+    // Ensure music is playing
+    const music = document.getElementById('bgMusic');
+    music.play();
+
+    // Trigger Confetti
+    confetti({
+        particleCount: 150,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ['#ff4d6d', '#ffafcc', '#ffc8dd']
+    });
+
+    // Update Text
+    document.getElementById('question').innerHTML = "Yay! See you on the 14th! 😘";
+    document.getElementById('name-greeting').innerHTML = "I Love You!";
     
-    // Hide the No button and center the Yes button
+    // Hide the No button
     document.getElementById('noButton').style.display = 'none';
-    const yesBtn = document.getElementById('yesButton');
-    yesBtn.style.transform = "scale(1.5)";
+
+    // Make Yes button bigger
+    document.getElementById('yesButton').style.transform = "scale(1.5)";
 }
