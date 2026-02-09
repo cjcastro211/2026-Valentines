@@ -1,11 +1,40 @@
+// --- Bouncing Photo Logic ---
+let posX = Math.random() * (window.innerWidth - 120);
+let posY = Math.random() * (window.innerHeight - 120);
+let velX = 2; 
+let velY = 2; 
+
+function animate() {
+    const photo = document.getElementById('bouncing-photo');
+    const screenWidth = window.innerWidth;
+    const screenHeight = window.innerHeight;
+    const photoSize = 120;
+
+    posX += velX;
+    posY += velY;
+
+    if (posX + photoSize >= screenWidth || posX <= 0) {
+        velX *= -1;
+    }
+    if (posY + photoSize >= screenHeight || posY <= 0) {
+        velY *= -1;
+    }
+
+    photo.style.left = posX + 'px';
+    photo.style.top = posY + 'px';
+
+    requestAnimationFrame(animate);
+}
+
+animate(); // Start the bounce
+
+// --- Button & Music Logic ---
 function moveButton() {
-    // Start music on the first attempt to click No
+    // Play music on first hover/tap
     const music = document.getElementById('bgMusic');
     music.play();
 
     const noBtn = document.getElementById('noButton');
-    
-    // Calculate random position within the whole window
     const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
     const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
     
@@ -14,25 +43,18 @@ function moveButton() {
 }
 
 function celebrate() {
-    // Start music if it hasn't started yet
     const music = document.getElementById('bgMusic');
     music.play();
 
-    // Trigger Heart Confetti
     confetti({
         particleCount: 150,
         spread: 70,
         origin: { y: 0.6 },
-        colors: ['#ff4d6d', '#ffafcc', '#ffc8dd']
+        colors: ['#ff4d6d', '#ffafcc']
     });
 
-    // Update the message
-    document.getElementById('question').innerHTML = "Yay! Best Valentine ever! 😘";
+    document.getElementById('question').innerHTML = "Yay! See you on the 14th! 😘";
     document.getElementById('name-greeting').innerHTML = "I Love You!";
-    
-    // Delete the No button entirely
     document.getElementById('noButton').remove();
-
-    // Make Yes button extra big
-    document.getElementById('yesButton').style.transform = "scale(2)";
+    document.getElementById('yesButton').style.transform = "scale(1.5)";
 }
