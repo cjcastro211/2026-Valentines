@@ -1,8 +1,9 @@
+/* style.css */
 body {
     background-color: #ffdae0;
     margin: 0;
     height: 100vh;
-    overflow: hidden; /* Important so the photo doesn't create scrollbars */
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,7 +13,7 @@ body {
 #bouncing-photo {
     width: 120px;
     height: 120px;
-    border-radius: 50%; /* Circular CD shape */
+    border-radius: 50%;
     border: 4px solid white;
     position: absolute;
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
@@ -28,27 +29,12 @@ body {
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     width: 80%;
     max-width: 350px;
-    z-index: 1; /* Keeps the text box in front of the bouncing photo */
-}
-
-#name-greeting {
-    font-family: 'Brush Script MT', cursive;
-    font-size: 3rem;
-    color: #ff4d6d;
-    margin: 0;
-}
-
-h1 {
-    color: #d63384;
-    font-size: 1.4rem;
-    margin-top: 10px;
+    z-index: 5; /* Sit above the bouncing photo */
 }
 
 .buttons {
     display: flex;
     justify-content: center;
-    align-items: center;
-    gap: 15px;
     margin-top: 20px;
 }
 
@@ -59,7 +45,6 @@ button {
     border-radius: 50px;
     cursor: pointer;
     font-weight: bold;
-    transition: 0.1s;
 }
 
 #yesButton {
@@ -70,5 +55,10 @@ button {
 #noButton {
     background-color: #adb5bd;
     color: white;
-    position: fixed; /* Necessary for the runaway effect */
+    position: fixed; 
+    /* START POSITION: This moves it away from the center Yes button */
+    bottom: 20%; 
+    left: 50%;
+    transform: translateX(-50%); 
+    z-index: 10;
 }
