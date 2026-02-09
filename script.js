@@ -1,4 +1,4 @@
-// --- Bouncing Photo Logic (Keep this as is) ---
+// --- Bouncing Photo Animation ---
 let posX = Math.random() * (window.innerWidth - 120);
 let posY = Math.random() * (window.innerHeight - 120);
 let velX = 2; 
@@ -7,27 +7,33 @@ let velY = 2;
 function animate() {
     const photo = document.getElementById('bouncing-photo');
     if(!photo) return;
+    
     const screenWidth = window.innerWidth;
     const screenHeight = window.innerHeight;
     const photoSize = 120;
+
     posX += velX;
     posY += velY;
+
     if (posX + photoSize >= screenWidth || posX <= 0) velX *= -1;
     if (posY + photoSize >= screenHeight || posY <= 0) velY *= -1;
+
     photo.style.left = posX + 'px';
     photo.style.top = posY + 'px';
+
     requestAnimationFrame(animate);
 }
 animate();
 
-// --- Button & Music Logic ---
+// --- Valentine Logic ---
 function moveButton() {
+    // Play music on first interaction
     const music = document.getElementById('bgMusic');
     music.play();
 
     const noBtn = document.getElementById('noButton');
     
-    // This removes the "centering" from CSS so it can move freely
+    // Clear the CSS "center" positioning
     noBtn.style.transform = "none";
     noBtn.style.bottom = "auto"; 
 
@@ -46,7 +52,7 @@ function celebrate() {
         particleCount: 150,
         spread: 70,
         origin: { y: 0.6 },
-        colors: ['#ff4d6d', '#ffafcc']
+        colors: ['#ff4d6d', '#ffafcc', '#ffffff']
     });
 
     document.getElementById('question').innerHTML = "Yay! See you on the 14th! 😘";
@@ -55,5 +61,5 @@ function celebrate() {
     const noBtn = document.getElementById('noButton');
     if(noBtn) noBtn.remove();
     
-    document.getElementById('yesButton').style.transform = "scale(1.5)";
+    document.getElementById('yesButton').style.transform = "scale(1.4)";
 }
