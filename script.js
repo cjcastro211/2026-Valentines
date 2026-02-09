@@ -1,29 +1,24 @@
 function moveButton() {
-    // Play music when she first interacts with the site
+    // Start music on the first attempt to click No
     const music = document.getElementById('bgMusic');
     music.play();
 
     const noBtn = document.getElementById('noButton');
     
-    // Get screen dimensions
-    const maxWidth = window.innerWidth - noBtn.offsetWidth;
-    const maxHeight = window.innerHeight - noBtn.offsetHeight;
-
-    // Generate random coordinates
-    const randomX = Math.floor(Math.random() * maxWidth);
-    const randomY = Math.floor(Math.random() * maxHeight);
-
-    // Apply new position
-    noBtn.style.left = randomX + 'px';
-    noBtn.style.top = randomY + 'px';
+    // Calculate random position within the whole window
+    const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+    const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+    
+    noBtn.style.left = x + 'px';
+    noBtn.style.top = y + 'px';
 }
 
 function celebrate() {
-    // Ensure music is playing
+    // Start music if it hasn't started yet
     const music = document.getElementById('bgMusic');
     music.play();
 
-    // Trigger Confetti
+    // Trigger Heart Confetti
     confetti({
         particleCount: 150,
         spread: 70,
@@ -31,13 +26,13 @@ function celebrate() {
         colors: ['#ff4d6d', '#ffafcc', '#ffc8dd']
     });
 
-    // Update Text
-    document.getElementById('question').innerHTML = "Yay! See you on the 14th! 😘";
+    // Update the message
+    document.getElementById('question').innerHTML = "Yay! Best Valentine ever! 😘";
     document.getElementById('name-greeting').innerHTML = "I Love You!";
     
-    // Hide the No button
-    document.getElementById('noButton').style.display = 'none';
+    // Delete the No button entirely
+    document.getElementById('noButton').remove();
 
-    // Make Yes button bigger
-    document.getElementById('yesButton').style.transform = "scale(1.5)";
+    // Make Yes button extra big
+    document.getElementById('yesButton').style.transform = "scale(2)";
 }
